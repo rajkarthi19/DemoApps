@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="vertical_devider_margin">32dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="txt_size_14">14sp</dimen>
+    <dimen name="size_20">20sp</dimen>
+    <dimen name="size_one">1dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="field_height">150dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="width_0dp">0dp</dimen>
+</resources>

@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">DemoApp</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">ekar Demo</string>
+    <string name="title_activity_maps">ekar</string>
 
     <!-- Permissions -->
     <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
@@ -8,4 +8,26 @@
     <string name="permission_required_toast">Location permission is required for this demo.</string>
 
     <string name="ok">Ok</string>
+    <string name="next">Next</string>
+    <string name="please_identify_the_unreporte_n_damage_area">Please identify the unreporte   damage area</string>
+    <string name="ekar">ekar</string>
+    <string name="back_side">Back Side</string>
+    <string name="left_side">Left Side</string>
+    <string name="front_side">Front Side</string>
+    <string name="right_side">Right Side</string>
+    <string name="comment">Comment</string>
+
+    <string name="alert_back_img_missing">Please choose back Image</string>
+    <string name="alert_left_img_missing">Please choose left Image</string>
+    <string name="alert_right_img_missing">Please choose right Image</string>
+    <string name="alert_front_img_missing">Please choose front Image</string>
+    <string name="complint_accepted">Complaint Accepted</string>
+    <string name="failed">Failed!</string>
+    <string name="data">data</string>
+    <string name="empty_alert">This field should not be empty</string>
+    <string name="pick_from_gallery">Select photo from gallery</string>
+    <string name="pick_from_camera">Capture photo from camera</string>
+    <string name="pick_img">Choose Image</string>
+
+
 </resources>
