@@ -4,6 +4,7 @@ import `in`.testdemo.map.R
 import `in`.testdemo.map.utils.ConstantsUtil
 import `in`.testdemo.map.utils.ConstantsUtil.REQUEST_CAMERA
 import `in`.testdemo.map.utils.ConstantsUtil.REQUEST_GALLERY
+import `in`.testdemo.map.utils.DisplayUtils
 import `in`.testdemo.map.utils.ImageUtil
 import android.Manifest
 import android.app.Activity.RESULT_CANCELED
@@ -17,14 +18,12 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_report.*
 import java.io.IOException
-
 
 /**
  * Created by karthi-2322 on 03,December,2018
@@ -44,6 +43,10 @@ class ReportFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
+
+    private fun initViews() {
         setTempImage()
         front_btn.setOnClickListener(this)
         back_btn.setOnClickListener(this)
@@ -51,6 +54,9 @@ class ReportFragment : Fragment(), View.OnClickListener {
         right_btn.setOnClickListener(this)
         next_btn.setOnClickListener(this)
 
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onClick(v: View) {
@@ -60,22 +66,19 @@ class ReportFragment : Fragment(), View.OnClickListener {
                     cmd_txt.error = getString(R.string.empty_alert)
                     return;
                 }else if(frontImgBitmap == null){
-                    Toast.makeText(context, getString(R.string.alert_front_img_missing), Toast.LENGTH_SHORT).show()
+                   DisplayUtils().showToast(context!!, getString(R.string.alert_front_img_missing))
                 }else if(backImgBitmap == null){
-                    Toast.makeText(context, getString(R.string.alert_back_img_missing), Toast.LENGTH_SHORT).show()
+                   DisplayUtils().showToast(context!!, getString(R.string.alert_back_img_missing))
                 }else if(leftImgBitmap == null){
-                    Toast.makeText(context, getString(R.string.alert_left_img_missing), Toast.LENGTH_SHORT).show()
+                   DisplayUtils().showToast(context!!, getString(R.string.alert_left_img_missing))
                 }else if(rightImgBitmap == null){
-                    Toast.makeText(context, getString(R.string.alert_right_img_missing), Toast.LENGTH_SHORT).show()
+                   DisplayUtils().showToast(context!!, getString(R.string.alert_right_img_missing))
                 }else{
-                    Toast.makeText(context, getString(R.string.complint_accepted), Toast.LENGTH_SHORT).show()
+                   DisplayUtils().showToast(context!!, getString(R.string.complint_accepted))
                     setTempImage()
                     findNavController().navigateUp()
                 }
-
-            }
-
-            else ->{
+            }else ->{
                 checkCameraPermission()
                 pickImgRequestCode = v.id
                 showPictureDialog()
@@ -85,8 +88,7 @@ class ReportFragment : Fragment(), View.OnClickListener {
 
     private fun checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(activity!!, Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
+            != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                 activity!!,
                 arrayOf(Manifest.permission.CAMERA),
@@ -103,12 +105,10 @@ class ReportFragment : Fragment(), View.OnClickListener {
                 PackageManager.PERMISSION_GRANTED ->
                     showPictureDialog()
                 PackageManager.PERMISSION_DENIED -> {
-
                 }
             }
         }
     }
-
 
     private fun setTempImage() {
         val thumbImage = context?.let { ImageUtil().getThumbImage(it) }
@@ -134,12 +134,12 @@ class ReportFragment : Fragment(), View.OnClickListener {
 
     private fun choosePhotoFromGallary() {
         val galleryIntent = Intent(Intent.ACTION_PICK,
-            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(galleryIntent, REQUEST_GALLERY)
     }
 
     private fun takePhotoFromCamera() {
-        val intent = Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE)
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, REQUEST_CAMERA)
     }
 
@@ -157,16 +157,14 @@ class ReportFragment : Fragment(), View.OnClickListener {
                     setImageBitmap( ImageUtil().getResizedBitmap(bitmap,400,400))
                 } catch (e: IOException) {
                     e.printStackTrace()
-                    Toast.makeText(context, getString(R.string.failed), Toast.LENGTH_SHORT).show()
+                   DisplayUtils().showToast(context!!, getString(R.string.failed))
                 }
             }
-
         } else if (requestCode == REQUEST_CAMERA) {
             val thumbnail = data!!.extras!!.get(getString(R.string.data)) as Bitmap?
             setImageBitmap(thumbnail?.let {ImageUtil().getResizedBitmap(it,400,400) })
         }
     }
-
 
     private fun setImageBitmap(bitmap: Bitmap?) {
         when (pickImgRequestCode){
@@ -174,17 +172,14 @@ class ReportFragment : Fragment(), View.OnClickListener {
                 frontImgBitmap = bitmap
                 front_img.setImageBitmap(bitmap)
             }
-
             R.id.back_btn ->{
                 backImgBitmap = bitmap
                 back_img.setImageBitmap(bitmap)
             }
-
             R.id.left_btn ->{
                 leftImgBitmap = bitmap
                 left_img.setImageBitmap(bitmap)
             }
-
             R.id.right_btn ->{
                 rightImgBitmap = bitmap
                 right_img.setImageBitmap(bitmap)

@@ -6,22 +6,22 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
-        <TextView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/size_20"
-            android:gravity="center"
-            android:text="@string/ekar">
-
-        </TextView>
+            android:gravity="start"
+            app:title="@string/ekar"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="@drawable/ic_arrow_back_white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -272,7 +272,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

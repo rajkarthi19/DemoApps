@@ -6,6 +6,11 @@ import android.graphics.Bitmap
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.toBitmap
 
+
+/**
+ * Created by karthi-2322 on 03,December,2018
+ */
+
 class ImageUtil {
 
     fun getResizedBitmap(image: Bitmap, bitmapWidth: Int, bitmapHeight: Int): Bitmap {

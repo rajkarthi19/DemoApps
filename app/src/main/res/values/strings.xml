@@ -9,7 +9,7 @@
 
     <string name="ok">Ok</string>
     <string name="next">Next</string>
-    <string name="please_identify_the_unreporte_n_damage_area">Please identify the unreporte   damage area</string>
+    <string name="please_identify_the_unreporte_n_damage_area">Please identify the unreporte \n damage area</string>
     <string name="ekar">ekar</string>
     <string name="back_side">Back Side</string>
     <string name="left_side">Left Side</string>
@@ -25,8 +25,8 @@
     <string name="failed">Failed!</string>
     <string name="data">data</string>
     <string name="empty_alert">This field should not be empty</string>
-    <string name="pick_from_gallery">Select photo from gallery</string>
-    <string name="pick_from_camera">Capture photo from camera</string>
+    <string name="pick_from_gallery">Select image from gallery</string>
+    <string name="pick_from_camera">Capture image from camera</string>
     <string name="pick_img">Choose Image</string>
 
 

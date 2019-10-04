@@ -8,6 +8,10 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Created by karthi-2322 on 03,December,2018
+ */
+
 class MainActivity : AppCompatActivity() {
 
     private var navController: NavController? = null
@@ -23,14 +27,14 @@ class MainActivity : AppCompatActivity() {
             navHost.navController.graph = graph
             navController = Navigation.findNavController(this, R.id.nav_cal_fragment)
         }
-        splash_view.postDelayed({ splash_view.visibility = View.GONE }, 1000)
+        splash_view.postDelayed({ splash_view.visibility = View.GONE }, 3000)
     }
 
-    override fun onSupportNavigateUp():Boolean {
-        return if (navController == null) {
-            true
-        } else {
-            navController?.navigateUp()!!
-        }
-    }
+//    override fun onSupportNavigateUp():Boolean {
+//        return if (navController == null) {
+//            true
+//        } else {
+//            navController?.navigateUp()!!
+//        }
+//    }
 }

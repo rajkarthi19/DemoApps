@@ -1,5 +1,8 @@
 package `in`.testdemo.map.utils
 
+/**
+ * Created by karthi-2322 on 03,December,2018
+ */
 object ConstantsUtil {
 
     const val LOCATION_PERMISSION_REQUEST_CODE = 1111
